@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: google_analytics
+    description: Google Analytics sample dataset from BigQuery public data.
+    database: bigquery-public-data
+    schema: google_analytics_sample
+    tables:
+      - name: ga_sessions  # redefined table name used in dbt for convenience. 
+        identifier: ga_sessions_* #real table name in big query. 
+        description: Session-level Google Analytics export tables, sharded by date.
