@@ -4,6 +4,6 @@ SELECT
   channelGrouping,
   COUNT(*) AS sessions,
   ROUND(SUM(totals.totalTransactionRevenue)/1000000, 2) AS revenue
-FROM `bigquery-public-data.google_analytics_sample.ga_sessions_*`
+FROM {{ source('google_analytics', 'ga_sessions') }}
 GROUP BY 1, 2
 ORDER BY 1, 2

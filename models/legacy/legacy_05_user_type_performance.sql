@@ -6,5 +6,5 @@ SELECT
   ROUND(SUM(totals.totalTransactionRevenue)/1000000, 2) AS revenue,
   ROUND(SUM(totals.transactions) / NULLIF(COUNT(*), 0) * 100, 2) AS conversion_rate,
   ROUND(SUM(totals.totalTransactionRevenue)/1000000 / NULLIF(SUM(totals.transactions), 0), 2) AS avg_order_value
-FROM `bigquery-public-data.google_analytics_sample.ga_sessions_*`
+FROM {{ source('google_analytics', 'ga_sessions') }}
 GROUP BY 1

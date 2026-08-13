@@ -7,7 +7,7 @@ SELECT
   trafficSource.campaign,
   totals.transactions,
   ROUND(totals.totalTransactionRevenue/1000000, 2) AS revenue
-FROM `bigquery-public-data.google_analytics_sample.ga_sessions_*`
+FROM {{ source('google_analytics', 'ga_sessions') }}
 WHERE _TABLE_SUFFIX BETWEEN '20170401' AND '20170430'
   AND channelGrouping = 'Display'
   AND totals.totalTransactionRevenue IS NOT NULL

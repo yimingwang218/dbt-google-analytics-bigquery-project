@@ -14,7 +14,7 @@ WITH session_flags AS (
     -- MAX(CASE WHEN h.eCommerceAction.action_type = '5' AND h.eCommerceAction.step = 2 THEN 1 ELSE 0 END) AS has_payment,
     -- MAX(CASE WHEN h.eCommerceAction.action_type = '5' AND h.eCommerceAction.step = 3 THEN 1 ELSE 0 END) AS has_review,
     MAX(CASE WHEN h.eCommerceAction.action_type = '6' THEN 1 ELSE 0 END) AS has_purchase
-  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_*`,
+  FROM {{ source('google_analytics', 'ga_sessions') }},
   UNNEST(hits) AS h
   GROUP BY month, fullVisitorId, visitId, totals.bounces, totals.pageviews
 ),

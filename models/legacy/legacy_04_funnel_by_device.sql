@@ -8,7 +8,7 @@ WITH session_flags AS (
     MAX(CASE WHEN h.eCommerceAction.action_type = '3' THEN 1 ELSE 0 END) AS has_add_to_cart,
     MAX(CASE WHEN h.eCommerceAction.action_type = '5' THEN 1 ELSE 0 END) AS has_checkout,
     MAX(CASE WHEN h.eCommerceAction.action_type = '6' THEN 1 ELSE 0 END) AS has_purchase
-  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_*`,
+  FROM {{ source('google_analytics', 'ga_sessions') }},
   UNNEST(hits) AS h
   GROUP BY 1, 2, 3, 4
 )
