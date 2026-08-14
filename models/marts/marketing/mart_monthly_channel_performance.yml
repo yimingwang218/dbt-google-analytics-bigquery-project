@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: mart_monthly_channel_performance
+    description: Monthly session volume and transaction revenue by Google Analytics channel grouping. One row represents one calendar month and channel grouping.
+    columns:
+      - name: month
+        description: First day of the calendar month in which the sessions occurred.
+        data_tests:
+          - not_null
+
+      - name: channel_grouping
+        description: Google Analytics default channel grouping for the sessions.
+        data_tests:
+          - not_null
+
+      - name: sessions
+        description: Number of sessions in the month and channel grouping.
+
+      - name: revenue
+        description: Total transaction revenue in standard currency units for the month and channel grouping.
