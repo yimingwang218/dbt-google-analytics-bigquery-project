@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_ga_sessions
+    description: Session-level Google Analytics data with standardized field names and types. One row represents one session.
+    columns:
+      - name: session_key
+        description: Unique identifier for a session, composed of the visitor ID, visit ID, and session date.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: session_date
+        description: Date on which the session occurred.
+
+      - name: full_visitor_id
+        description: Google Analytics identifier for the visitor.
+
+      - name: visit_id
+        description: Google Analytics identifier for the visit.
+
+      - name: session_started_at
+        description: Timestamp at which the session started.
+
+      - name: channel_grouping
+        description: Google Analytics default channel grouping for the session.
+
+      - name: device_category
+        description: Device category used during the session.
+
+      - name: transaction_revenue
+        description: Transaction revenue in the raw Google Analytics micro-unit.
