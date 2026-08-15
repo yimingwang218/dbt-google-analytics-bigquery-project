@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: mart_user_type_performance
+    description: Session, purchase, revenue, conversion-rate, and average-order-value performance by visitor type. One row represents one user type.
+    columns:
+      - name: user_type
+        description: Whether the session was from a new or returning visitor.
+        data_tests:
+          - not_null
+          - unique
+          - accepted_values:
+              arguments:
+                values: ['New User', 'Returning User']
+
+      - name: sessions
+        description: Number of sessions for the user type.
+
+      - name: purchases
+        description: Number of transactions for the user type.
+
+      - name: revenue
+        description: Total transaction revenue in standard currency units for the user type.
+
+      - name: conversion_rate
+        description: Percentage of sessions that resulted in a transaction.
+
+      - name: avg_order_value
+        description: Average transaction revenue for the user type.
