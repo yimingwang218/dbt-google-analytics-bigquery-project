@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_ga_session_hits
+    description: Hit-level Google Analytics data with standardized field names. One row represents one hit within a session.
+    columns:
+      - name: hit_key
+        description: Unique identifier for a hit, composed of the session key and hit number.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: session_key
+        description: Identifier for the session to which the hit belongs.
+        data_tests:
+          - not_null
+
+      - name: hit_number
+        description: Sequential number of the hit within the session.
+
+      - name: ecommerce_action_type
+        description: Google Analytics ecommerce action type recorded for the hit.
+
+      - name: ecommerce_action_step
+        description: Checkout step recorded for the ecommerce action, when available.
+
+      - name: transaction_id
+        description: Transaction identifier recorded for the hit, when available.
