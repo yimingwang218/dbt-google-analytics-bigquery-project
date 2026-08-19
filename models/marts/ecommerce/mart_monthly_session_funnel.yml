@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: mart_monthly_session_funnel
+    description: Monthly ecommerce funnel performance. One row represents one calendar month.
+    columns:
+      - name: month
+        description: First day of the calendar month in which the sessions occurred.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: total_sessions
+        description: Total number of sessions in the month.
+
+      - name: total_valid_sessions
+        description: Sessions meeting the legacy valid-session definition of having a null bounce count.
+
+      - name: pct_valid_sessions
+        description: Percentage of total sessions that are valid sessions.
+
+      - name: total_clicks
+        description: Sessions containing at least one ecommerce action type 1 hit.
+
+      - name: pct_clicks
+        description: Percentage of valid sessions containing at least one ecommerce action type 1 hit.
+
+      - name: total_product_views
+        description: Sessions containing at least one ecommerce action type 2 hit.
+
+      - name: pct_product_views
+        description: Percentage of valid sessions containing at least one ecommerce action type 2 hit.
+
+      - name: total_add_to_cart
+        description: Sessions containing at least one ecommerce action type 3 hit.
+
+      - name: pct_add_to_cart
+        description: Percentage of product-view sessions containing at least one ecommerce action type 3 hit.
+
+      - name: total_checkout
+        description: Sessions containing at least one ecommerce action type 5 hit.
+
+      - name: pct_checkout
+        description: Percentage of add-to-cart sessions containing at least one ecommerce action type 5 hit.
+
+      - name: total_purchase
+        description: Sessions containing at least one ecommerce action type 6 hit.
+
+      - name: pct_purchase
+        description: Percentage of checkout sessions containing at least one ecommerce action type 6 hit.
+
+      - name: overall_conversion_rate
+        description: Percentage of total sessions containing at least one ecommerce action type 6 hit.
