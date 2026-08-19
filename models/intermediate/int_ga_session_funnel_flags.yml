@@ -1,0 +1,71 @@
+version: 2
+
+models:
+  - name: int_ga_session_funnel_flags
+    description: Session-level Google Analytics funnel data. One row represents one session, with flags indicating whether the session reached each ecommerce funnel action.
+    columns:
+      - name: session_key
+        description: Unique identifier for the session. This model contains one row per session.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: session_date
+        description: Date on which the session occurred.
+        data_tests:
+          - not_null
+
+      - name: channel_grouping
+        description: Google Analytics default channel grouping for the session.
+
+      - name: device_category
+        description: Device category used during the session.
+
+      - name: bounce_count
+        description: Number of bounces recorded for the session.
+
+      - name: pageview_count
+        description: Number of pageviews recorded for the session.
+
+      - name: is_valid_session
+        description: Whether the session meets the legacy valid-session definition of having a null bounce count.
+
+      - name: has_click
+        description: 1 when the session contains at least one ecommerce action type 1 hit; otherwise 0.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+
+      - name: has_product_view
+        description: 1 when the session contains at least one ecommerce action type 2 hit; otherwise 0.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+
+      - name: has_add_to_cart
+        description: 1 when the session contains at least one ecommerce action type 3 hit; otherwise 0.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+
+      - name: has_checkout
+        description: 1 when the session contains at least one ecommerce action type 5 hit; otherwise 0.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+
+      - name: has_purchase
+        description: 1 when the session contains at least one ecommerce action type 6 hit; otherwise 0.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
